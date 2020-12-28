@@ -1,24 +1,29 @@
 import React, {useState,useEffect} from 'react'
 import "./product.css";
-function Product() {
+import ProductDesc from "./ProductDesc";
+;
+function Product({image, name, price}) {
 
     const [productImage, setProductImage] = useState("");
     const [productName, setProductName] = useState("");
     const [productPrice, setProductPrice]=useState("");
 
+    
+
     return (
         <div className="product">
             
+
             {/* Image */}
             <img
                 className="product__image" 
-                src="https://images-na.ssl-images-amazon.com/images/I/71i2XhHU3pL._SX679_.jpg"
+                src={image}
                 alt="product_image"
             />
             {/* name */}
-            <h3> iPhone 11 </h3>
+            <h3> {name} </h3>
             {/* price */}
-            <h3>500$</h3> 
+            <h3>{price}</h3> 
 
         </div>
         
