@@ -15,6 +15,7 @@ function Home() {
                 />
             </div>
             <div className="home__product">
+                <h1>PRODUCT</h1>
                 <Product/>
                 <Product/>
                 <Product/>
