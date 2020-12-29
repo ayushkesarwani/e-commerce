@@ -11,7 +11,7 @@
     background-color: #EAEDED;
 
 }
-.home__product_specific
+.home__productSpecific
 {
     background-color: white;
     margin-top: 30px;
@@ -20,4 +20,9 @@
     margin: 20px 20px 20px 20px;
     max-height:500px;
     cursor: pointer;
+}
+
+.home__productModal
+{
+    
 }
