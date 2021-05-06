@@ -18,11 +18,14 @@ function Product({image, name, price}) {
                 alt="product_image"
             />
 
-            {/* name */}
-            <h3> {name} </h3>
+            <div className="product__info">
+                {/* name */}
+                <h3> {name} </h3>
 
-            {/* price */}
-            <h3>{price}</h3> 
+                {/* price */}
+                <h3>{price}</h3> 
+            </div>
+            
 
         </div>
         

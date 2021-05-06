@@ -1,13 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import './header.css'
-import { FaSearch } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart,FaSearch } from "react-icons/fa";
 import Avatar from 'react-avatar';
+import {Context} from "./Store"
+import {NavLink,BrowserRouter } from 'react-router-dom'
 
 function Header() {
 
-    const [items, setItems] = useState(0);
+    // const [items, setItems] = useState(0);
+    const [state, setState] = useContext(Context);
 
+    
     return (
         <div className="header">
             <div className="header__image">
@@ -21,11 +24,16 @@ function Header() {
                 <input type="text" placeholder=""/>
                 <button><FaSearch/></button>
             </div>
-            <div className="header__cart">
-                <h4> {items}</h4>
-                <p><FaShoppingCart /></p>
+            <BrowserRouter>
                 
-            </div>
+                <div className="header__cart">
+                    <h4> {state.length}</h4>
+                    <p><NavLink to="cart"><FaShoppingCart /></NavLink></p>
+                    
+                </div>
+                
+            </BrowserRouter>
+            
 
             <div className="header__profile">
                 <Avatar
@@ -35,6 +43,9 @@ function Header() {
                 size="50"
                 /> 
             </div>
+
+            
+            
         </div>
     )
 }

@@ -7,7 +7,7 @@
 .productDesc__image>img
 {
     max-width: 700px;
-    width: 100%;
+    width: 80%;
     height: 600px;
     object-fit: fill;
     
