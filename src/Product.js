@@ -33,3 +33,4 @@ function Product({image, name, price}) {
 }
 
 export default Product;
+

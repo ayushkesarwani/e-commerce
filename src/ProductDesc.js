@@ -61,12 +61,14 @@ const ProductDesc = ({productArray, prodId}) => {
                             image : prodDisplay.image
                         }
                     ])
+                    
                 }}>
                     Add to Cart
                 </button>
                 <button>
                     Buy Now
                 </button>
+                {console.log("product desc->", state)}
 
             </div>  
                 

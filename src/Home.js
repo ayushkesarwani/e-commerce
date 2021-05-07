@@ -85,18 +85,18 @@ function Home() {
             </div>
             
             
-                <ReactModal
-                    isOpen={openModal}
-                    onRequestClose={()=>setOpenModal(false)}
-                    onAfterClose={()=>setOpenModal(false)}
-                    shouldCloseOnOverlayClick={true}
-                >
-                    <div className="home__productModal">
-                        <ProductDesc productArray={productArray} prodId={prodId}/>
-                        <button onClick={()=>setOpenModal(false)}>CLOSE</button>
-                    </div>
-                    
-                </ReactModal>
+            <ReactModal
+                isOpen={openModal}
+                onRequestClose={()=>setOpenModal(false)}
+                onAfterClose={()=>setOpenModal(false)}
+                shouldCloseOnOverlayClick={true}
+            >
+                <div className="home__productModal">
+                    <ProductDesc productArray={productArray} prodId={prodId}/>
+                    <button onClick={()=>setOpenModal(false)}>CLOSE</button>
+                </div>
+                
+            </ReactModal>
                 
             
             
