@@ -23,7 +23,7 @@ function Header() {
                 <img
                 src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
                 alt="amazon_logo"
-                /> 
+                />  
               
             </div>
             </a>
