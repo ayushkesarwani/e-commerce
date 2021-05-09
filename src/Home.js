@@ -3,52 +3,67 @@ import ReactModal from 'react-modal'
 import Product from './Product';
 import ProductDesc from "./ProductDesc"
 import "./home.css"
+import {db} from './firebase';
 
 function Home() {
 
     const [productArray, setProductArray] = useState([]);
     const [openModal,setOpenModal]=useState(false);
     const [prodId, setProdId] = useState(null);
-    
-    useEffect(()=>setProductArray([
-        {
-            id:0,
-            image: "https://images-na.ssl-images-amazon.com/images/I/71i2XhHU3pL._SX679_.jpg",
-            name: "iPhone",
-            price: "$650",
-            description: "this is description of Iphone"
-        },
-        {
-            id:1,
-            image: "https://images-na.ssl-images-amazon.com/images/I/71n6gXQn79L._SL1500_.jpg",
-            name: "Peanut Butter",
-            price: "7$",
-            description: "This is the description of Peanut Butter"
-        },
-        {
-            id:2,
-            image: "https://images-na.ssl-images-amazon.com/images/I/51RXzjrUmkL._SL1000_.jpg",
-            name: "Mug",
-            price: "65$",
-            description: "This is the description of Mug"
-        },
-        {
-            id:3,
-            image: "https://images-na.ssl-images-amazon.com/images/I/416dD5gUvOL.jpg",
-            name: "Specs",
-            price: "45$",
-            description: "This is the description of Specs"
-        },
-        {
-            id:4,
-            image: "https://images-na.ssl-images-amazon.com/images/I/61RyEv5mnNL._SL1100_.jpg",
-            name: "Echo dot",
-            price: "88$",
-            description: "This is the description of EchoDot"
-        }
+
+
+    useEffect(() => {
+        //this is where code runs
+        db.collection('items').onSnapshot(snapshot=>{
+          //everytime the new posts added, this code fires..
+          setProductArray(snapshot.docs.map((doc) =>doc.data()))
         
-    ]),[]
-    );
+        })
+      }, [])
+    
+      console.log("--=>",productArray);
+
+
+
+    // useEffect(()=>setProductArray([
+    //     {
+    //         id:0,
+    //         image: "https://images-na.ssl-images-amazon.com/images/I/71i2XhHU3pL._SX679_.jpg",
+    //         name: "iPhone",
+    //         price: "$650",
+    //         description: "this is description of Iphone"
+    //     },
+    //     {
+    //         id:1,
+    //         image: "https://images-na.ssl-images-amazon.com/images/I/71n6gXQn79L._SL1500_.jpg",
+    //         name: "Peanut Butter",
+    //         price: "7$",
+    //         description: "This is the description of Peanut Butter"
+    //     },
+    //     {
+    //         id:2,
+    //         image: "https://images-na.ssl-images-amazon.com/images/I/51RXzjrUmkL._SL1000_.jpg",
+    //         name: "Mug",
+    //         price: "65$",
+    //         description: "This is the description of Mug"
+    //     },
+    //     {
+    //         id:3,
+    //         image: "https://images-na.ssl-images-amazon.com/images/I/416dD5gUvOL.jpg",
+    //         name: "Specs",
+    //         price: "45$",
+    //         description: "This is the description of Specs"
+    //     },
+    //     {
+    //         id:4,
+    //         image: "https://images-na.ssl-images-amazon.com/images/I/61RyEv5mnNL._SL1100_.jpg",
+    //         name: "Echo dot",
+    //         price: "88$",
+    //         description: "This is the description of EchoDot"
+    //     }
+        
+    // ]),[]
+    // );
     // console.log(productArray);
 
     return (
