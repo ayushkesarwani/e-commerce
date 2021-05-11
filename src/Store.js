@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
-const productCart=[{
+const cartArray = 
+    [{
         id:0,
         image: "https://images-na.ssl-images-amazon.com/images/I/71i2XhHU3pL._SX679_.jpg",
         name: "iPhone",
@@ -12,14 +13,16 @@ const productCart=[{
         name: "Peanut Butter",
         price: "7$"
     }]
+//const userEmail="yahoo.com"
+
 export const Context = React.createContext();
 
-const Store = ({children}) => {
-    const [state, setState]=useState(productCart);
-
+const Store = ({children}) => { 
+    const [state, setState]=useState(cartArray);
+    // const [userEmail, setUserEmail] = useState("gmail.com");
     return (
         <div className="store">
-            <Context.Provider value={[state, setState]}>
+            <Context.Provider value={ [state, setState]}>
                 {children}
             </Context.Provider>
         </div>
