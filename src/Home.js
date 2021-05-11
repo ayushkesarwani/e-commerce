@@ -16,14 +16,24 @@ function Home() {
         //this is where code runs
         db.collection('items').onSnapshot(snapshot=>{
           //everytime the new posts added, this code fires..
-          setProductArray(snapshot.docs.map((doc) =>doc.data()))
+          
+          //setProductArray(snapshot.docs.map((doc) =>doc.data()))
+
+          setProductArray(snapshot.docs.map((doc) =>({
+                
+                docid : doc.id,
+                doc : doc.data(),
+            })))
+            
+        
+
         
         })
       }, [])
     
       console.log("--=>",productArray);
 
-
+      
 
     // useEffect(()=>setProductArray([
     //     {
@@ -83,12 +93,12 @@ function Home() {
                         return (
                             <div className="home__productSpecific" onClick={()=>{
                                 setOpenModal(true)
-                                setProdId(product.id)
+                                setProdId(product.doc.id)
                             }}>
                             <Product
-                                image={product.image}
-                                name={product.name}
-                                price={product.price}
+                                image={product.doc.image}
+                                name={product.doc.name}
+                                price={product.doc.price}
                             />
                              
                             </div>

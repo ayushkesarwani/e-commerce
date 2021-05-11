@@ -1,21 +1,18 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {Context} from "./Store"
+import Store,{Context} from "./Store"
 import "./productDesc.css"
-
+import {db} from './firebase';
+import firebase,{auth} from 'firebase'
+ 
 const ProductDesc = ({productArray, prodId}) => {
-
+    const [email, setEmail] = useState(null);
     const [prodDisplay, setProdDisplay] = useState({})    
     const [state, setState] = useContext(Context);
-    
-    useEffect(() => {
-        
-              
+    useEffect(() => {  
             productArray.map((product) => {
-                prodId === product.id ? (
-                    
-                            //console.log("object initialized")
-                            setProdDisplay(product)    
-                    
+                prodId === product.doc.id ? (
+                    //console.log("object initialized")
+                    setProdDisplay(product.doc)     
                 ) : 
                 (
                     console.log("not ok")
@@ -25,14 +22,32 @@ const ProductDesc = ({productArray, prodId}) => {
     , [])
 
     
+    const handleAddCart = () => {
+        email?
+        db.collection("userid").doc(email).collection("carts").doc().set({
+            id : prodId, 
+            name : prodDisplay.name, 
+            price: prodDisplay.price,
+            image : prodDisplay.image
+
+        })
+        
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error.message);
+        })
+        :
+        alert("You have to login first")
+    }
+    
     
     return (
         <div className="productDesc">
             {/* <h1>Now Description is here...</h1> */}
             {/* <h1>{prodId}</h1> */}
             {/* <h1>{state.length}</h1> */}
-            
-            
             {/* <div>{prodDisplay.name} </div> */}
 
             <div className="productDesc__image">
@@ -41,7 +56,6 @@ const ProductDesc = ({productArray, prodId}) => {
                     alt="Image not found"
                 />
             </div>
-            
             <div className="productDesc__info">
                 <h1>{prodDisplay.name}</h1>
 
@@ -51,7 +65,7 @@ const ProductDesc = ({productArray, prodId}) => {
             </div>
 
             <div className="productDesc__addCart">
-                <button onClick = {() => {
+                {/* <button onClick = {() => {
                     console.log('added')
                     setState([...state,
                         {
@@ -64,14 +78,26 @@ const ProductDesc = ({productArray, prodId}) => {
                     
                 }}>
                     Add to Cart
+                </button> */}
+
+                <button onClick={handleAddCart}>
+                    Add to Cart
                 </button>
+
                 <button>
                     Buy Now
                 </button>
                 {console.log("product desc->", state)}
 
             </div>  
-                
+            {
+            firebase.auth().onAuthStateChanged((firebaseUser)=>{
+                    firebaseUser?
+                    setEmail(firebaseUser.email):
+                    setEmail(null)
+            })
+            } 
+           
                 
         </div>
     )

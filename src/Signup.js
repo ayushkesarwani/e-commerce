@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import firebase, {auth} from './firebase.js';
 import { Redirect,useHistory } from 'react-router-dom';
-
+import {db} from './firebase'
+import {Context} from "./Store"
 
 const Signup = () => {
 
@@ -15,7 +16,7 @@ const Signup = () => {
         // setUserdetail((prevProps) => ({
         //     ...prevProps,
         //     [event.target.name]: event.target.value
-        // }));
+        /// }));
         //console.log(Userdetail)
         
         if (event.target.name === "username") {
@@ -39,9 +40,17 @@ const Signup = () => {
     const handleSubmit = () => {
         
         const promise = auth.createUserWithEmailAndPassword(email, password);
-        promise
+        promise 
         .then(()=>{
             console.log("SignUp Successfully");
+            db.collection("userid").doc(email).set({
+            })
+            .then(() => {
+                console.log("Document successfully written!");
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error.message);
+            })
             history.push("/")
         })
         .catch((e)=>alert(e.message));
