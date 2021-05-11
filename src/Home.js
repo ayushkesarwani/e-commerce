@@ -24,10 +24,7 @@ function Home() {
                 docid : doc.id,
                 doc : doc.data(),
             })))
-            
-        
 
-        
         })
       }, [])
     

@@ -5,9 +5,10 @@ import {db} from './firebase';
 import firebase,{auth} from 'firebase'
  
 const ProductDesc = ({productArray, prodId}) => {
-    const [email, setEmail] = useState(null);
+    
+    const {email} = useContext(Context);
     const [prodDisplay, setProdDisplay] = useState({})    
-    const [state, setState] = useContext(Context);
+    
     useEffect(() => {  
             productArray.map((product) => {
                 prodId === product.doc.id ? (
@@ -87,16 +88,16 @@ const ProductDesc = ({productArray, prodId}) => {
                 <button>
                     Buy Now
                 </button>
-                {console.log("product desc->", state)}
+
 
             </div>  
-            {
+            {/* {
             firebase.auth().onAuthStateChanged((firebaseUser)=>{
                     firebaseUser?
                     setEmail(firebaseUser.email):
                     setEmail(null)
             })
-            } 
+            }  */}
            
                 
         </div>

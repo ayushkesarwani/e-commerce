@@ -8,9 +8,10 @@ import firebase,{auth} from "firebase"
 
 function Header() {
 
-    const [email, setEmail] = useState(null);
-    const [state, setState] = useContext(Context);
-    
+    //const [email, setEmail] = useState(null);
+    const {email} = useContext(Context);
+    const cartArray=[];
+    console.log("from header email", email)
     // console.log('ProductCart',state.productCart)
     // console.log("email", state);
     const url="http://localhost:3000/"
@@ -51,7 +52,7 @@ function Header() {
                     </div>
                 ) : (
                     <div className="header__cart">
-                        <h4> {state.length}</h4>
+                        <h4> {cartArray.length}</h4>
                         
                         <p>
                             <a href={`${url}cart`}> <FaShoppingCart/></a>
@@ -91,7 +92,7 @@ function Header() {
             }    
 
 
-            {
+            {/* {
                 
                 firebase.auth().onAuthStateChanged((firebaseUser)=>{
                      console.log("auth state change",firebaseUser)
@@ -100,21 +101,9 @@ function Header() {
                     firebaseUser?
                     setEmail(firebaseUser.email):
                     setEmail(null)
-                    // setState(
-                    //     {
-                    //         productCart : state.productCart, 
-                    //         userEmail : firebaseUser.email
-                    //     }
-                    // )
-                    // :
-                    // setState(
-                    //     {
-                    //         productCart : state.productCart, 
-                    //         userEmail : null
-                    //     }
-                    // ) 
+                    
                 })
-            }
+            } */}
             
             
             

@@ -8,7 +8,7 @@ import firebase from 'firebase';
 
 const Cart = () => {
 
-    const [email, setEmail] = useState(null);
+    const {email} = useContext(Context);
     //const [state, setState] = useContext(Context);
     const [cartArray,setCartArray]=useState([]);
     
@@ -25,7 +25,7 @@ const Cart = () => {
 
     useEffect(() => {
         //this is where code runs
-        console.log("email", email, typeof(email))
+        //console.log("email", email, typeof(email))
         email?
         db.collection('userid').doc(email).collection('carts').onSnapshot(snapshot=>{
           //everytime the new posts added, this code fires..
@@ -37,7 +37,7 @@ const Cart = () => {
             })))
         
         }):
-        console.log(cartArray)
+        <p></p>
       }, [email, cartArray])
     
     return (
@@ -57,17 +57,6 @@ const Cart = () => {
                     </div>
                 )
             })}
-
-            {
-            firebase.auth().onAuthStateChanged((firebaseUser)=>{
-                    console.log('from cart', firebaseUser)
-                    firebaseUser?
-                    setEmail(firebaseUser.email):
-                    setEmail(null)
-                    //console.log(email)
-            })
-            } 
-
             
         </div>
     )
