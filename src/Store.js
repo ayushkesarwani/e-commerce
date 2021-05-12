@@ -1,19 +1,6 @@
 import React, {useState} from 'react'
 import {db,auth} from './firebase'
 
-// var docRef = db.collection("cities").doc("SF");
-
-// docRef.get().then((doc) => {
-//     if (doc.exists) {
-//         console.log("Document data:", doc.data());
-//     } else {
-//         // doc.data() will be undefined in this case
-//         console.log("No such document!");
-//     }
-// }).catch((error) => {
-//     console.log("Error getting document:", error);
-// });
-
 export const Context = React.createContext();
 
 const Store = ({children}) => { 
@@ -64,15 +51,6 @@ const Store = ({children}) => {
     const deleteCart = () => {
         console.log("deleted from cart")
     }
-
-    // db.collection('items').onSnapshot(snapshot=>{
-    //     //everytime the new posts added, this code fires..
-    //     //setProductArray(snapshot.docs.map((doc) =>doc.data())
-    //     setCartArray(snapshot.docs.map((doc) =>({
-    //         docid : doc.id,
-    //         doc : doc.data(),
-    //     })))
-    // })
 
     console.log("from Store",cartArray);
     return (
