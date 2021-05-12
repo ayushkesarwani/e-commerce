@@ -9,8 +9,7 @@ import firebase,{auth} from "firebase"
 function Header() {
 
     //const [email, setEmail] = useState(null);
-    const {email} = useContext(Context);
-    const cartArray=[];
+    const {email,cartArray} = useContext(Context);
     console.log("from header email", email)
     // console.log('ProductCart',state.productCart)
     // console.log("email", state);
@@ -104,8 +103,6 @@ function Header() {
                     
                 })
             } */}
-            
-            
             
         </div>
     )
