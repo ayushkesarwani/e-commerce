@@ -16,7 +16,7 @@ const ProductDesc = ({productArray, prodId}) => {
                     setProdDisplay(product.doc)     
                 ) : 
                 (
-                    console.log("not ok")
+                    console.log("")
                 )
             })
         }
@@ -30,7 +30,6 @@ const ProductDesc = ({productArray, prodId}) => {
             name : prodDisplay.name, 
             price: prodDisplay.price,
             image : prodDisplay.image
-
         })
         
         .then(() => {
